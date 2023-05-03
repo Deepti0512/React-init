@@ -1,7 +1,12 @@
 import React from "react";
+import Movies from "./components/Movies";
 
 const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <Movies />
+    </>
+  );
 };
 
 export default App;

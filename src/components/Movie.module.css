@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,200&family=Ubuntu:wght@700&display=swap');
+
+.movie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+    background-color: #12033d;
+    color:white;
+    box-sizing: border-box;
+    width:70%;
+    padding: 10px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+}
+.title{
+  color: yellow
+}
+.release-date{
+  font-style:italic;
+}
+.description{
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    margin: 10px;
+}
