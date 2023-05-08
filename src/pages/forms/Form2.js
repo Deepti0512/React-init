@@ -36,7 +36,6 @@ const Form2 = () => {
     if (!enteredNameIsValid || !enteredEmailIsValid) {
       return;
     }
-    
 
     console.log(enteredName);
 
