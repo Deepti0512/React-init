@@ -1,82 +1,72 @@
 import React from "react";
+import { useState } from "react";
 import "../../UI/Layout/Layout.css";
 import "./Form.css";
 
-import { useRef, useState, useEffect } from "react";
-
 const Form1 = () => {
-  const nameInputRef = useRef();
   const [enteredName, setEnteredName] = useState("");
-  const [enteredNameIsValid, setEnteredNameIsValid] = useState(false);
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+  const enteredNameIsValid = enteredNameTouched && enteredName.trim() !== "";
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
-  useEffect(() => {
-    if (enteredNameIsValid) {
-      console.log("Name Input is valid!");
-    }
-  }, [enteredNameIsValid]);
+  let formIsValid = false;
+
+  if (enteredNameIsValid) {
+    formIsValid = true;
+  }
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
-
-    if (event.target.value.trim() !== "") {
-      setEnteredNameIsValid(true);
-    }
   };
+
   const nameInputBlurHandler = (event) => {
     setEnteredNameTouched(true);
-    if (enteredName.trim() === "") {
-      setEnteredNameIsValid(false);
-    }
   };
+
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
     setEnteredNameTouched(true);
 
-    if (enteredName.trim() === "") {
-      setEnteredNameIsValid(false);
+    if (!formIsValid) {
       return;
     }
 
-    setEnteredNameIsValid(true);
-
     console.log(enteredName);
-
-    const enteredValue = nameInputRef.current.value;
-    console.log(enteredValue);
 
     // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
     setEnteredName("");
+    setEnteredNameTouched(false);
   };
 
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
-
   const nameInputClasses = nameInputIsInvalid
-    ? "form-control invalid"
-    : "form-control";
+    ? "input-box invalid"
+    : "input-box";
 
   return (
     <div className="container">
       <h1>Form 1 🪶 Single Input Form</h1>
-      <form className={nameInputClasses}>
-        <div className="input-box">
+      <form className="form-control">
+        <div className={nameInputClasses}>
           <label htmlFor="name">Enter Name:</label>
           <input
             type="text"
             value={enteredName}
             id="name"
-            ref={nameInputRef}
             onChange={nameInputChangeHandler}
             onBlur={nameInputBlurHandler}
           />
         </div>
-        <button type="submit" onClick={formSubmissionHandler}>
-          Submit Form
-        </button>
         {nameInputIsInvalid && (
           <p className="error-text">Name must not be empty.</p>
         )}
+        <button
+          type="submit"
+          onClick={formSubmissionHandler}
+          disabled={!formIsValid}
+        >
+          Submit Form
+        </button>
       </form>
     </div>
   );

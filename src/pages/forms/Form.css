@@ -40,6 +40,15 @@ button:active {
     border-color: #33059e;
 }
 
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+    background-color: #ccc;
+    color: #292929;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
 .invalid input {
     border: 1px solid #b40e0e;
     background-color: #fddddd;
@@ -53,4 +62,5 @@ button:active {
 .error-text {
     color: #b40e0e;
     font-weight: bold;
+    margin: 5px;
 }
