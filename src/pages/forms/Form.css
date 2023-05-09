@@ -47,7 +47,7 @@ button:disabled:active {
     color: #292929;
     border-color: #ccc;
     cursor: not-allowed;
-} 
+}
 
 .invalid input {
     border: 1px solid #b40e0e;
@@ -62,5 +62,4 @@ button:disabled:active {
 .error-text {
     color: #b40e0e;
     font-weight: bold;
-    margin: 5px;
 }
